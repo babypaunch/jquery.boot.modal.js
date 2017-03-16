@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+    <title>BOOT MODAL SAMPLE</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+</head>
+<body>
+	<a id="modalTest" href="#" class="btn btn-primary">MODAL</a>
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="jquery.boot.modal.js"></script>
+	<script>
+		$(function(){
+			$("#modalTest").modal({
+				id: "testModal"
+				, header: {
+					title: "MODAL - TEST"
+				}
+				, body: {
+					css: {
+						height: "500px"
+					}
+					, html: "<span style='font-size: 300rem;'>CONTENTS</span>"
+				}
+			});
+
+			$("#testmodal .btn-success").click(function(){
+				console.log("modal-success");
+			});
+
+			ALERT("1111");
+			CONFIRM("2222", function(data){
+				console.log(data);
+			});
+			ERROR("3333");
+		});
+	</script>
+</body>
+</html>
