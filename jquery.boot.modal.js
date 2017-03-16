@@ -34,7 +34,7 @@ function ACE(type, text, callback){
 			}
 			, html: text
 		}
-		, footer: "<a href='#' data-dismiss='modal' class='btn btn-default'>Cancel</a>" + (type === "confirm" ? " <a href='#' data-dismiss='modal' class='btn btn-success'>Agree</a>" : "")
+		, footer: "<a href='#' data-dismiss='modal' class='btn btn-default'>" + (type === "confirm" ? "Cancel" : "Close") + "</a>" + (type === "confirm" ? " <a href='#' data-dismiss='modal' class='btn btn-success'>Agree</a>" : "")
 	};
 
 	var modal = (function(defaults){
@@ -103,7 +103,7 @@ $.fn.modal = function(data){
 			}
 			, html: ""
 		}
-		, footer: "<a href='#' data-dismiss='modal' class='btn btn-default'>Close</a> <a href='#' class='btn btn-success'>Save</a>"
+		, footer: "<a href='#' data-dismiss='modal' class='btn btn-default'>Cancel</a> <a href='#' class='btn btn-success'>Save</a>"
 	};
 	$.extend(true, defaults, data);
 
