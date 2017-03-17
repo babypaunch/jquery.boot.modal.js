@@ -16,6 +16,30 @@
 	<script src="jquery.boot.modal.js"></script>
 	<script>
 		$(function(){
+			$("#modalTest").click(function(){
+				if($("#gogogo").length === 0){
+					$(this).modal({
+						id: "testModal"
+						, header: {
+							title: "MODAL - TEST"
+						}
+						, body: {
+							css: {
+								height: "500px"
+							}
+							, html: "<span style='font-size: 300rem;'>CONTENTS</span>"
+						}
+					});
+				}else{
+					alert("0000000");
+				}
+			});
+
+			$("body").on("click", ".btn-success", function(){
+				console.log("modal-success");
+			});
+
+			/*
 			$("#modalTest").modal({
 				id: "testModal"
 				, header: {
@@ -28,10 +52,7 @@
 					, html: "<span style='font-size: 300rem;'>CONTENTS</span>"
 				}
 			});
-
-			$("#testmodal .btn-success").click(function(){
-				console.log("modal-success");
-			});
+			*/
 
 			ALERT("1111");
 			CONFIRM("2222", function(data){

@@ -131,14 +131,6 @@ $.fn.modal = function(data){
 
 	$("body").append(modal);
 
-	$("[id^='ace-modal-'] [data-dismiss]").click(function(){
-		$(this).closest("div.modal").hide();
-
-		if(type === "confirm" && callback !== undefined && $(this).closest(".modal").attr("id") === "ace-modal-confirm"){
-			callback($(this).attr("class") === "btn btn-success");
-		}
-	});
-
 	return this.each(function(){
 		$(this).attr({"data-toggle": "modal", "href": "#" + defaults.id});
 	});
