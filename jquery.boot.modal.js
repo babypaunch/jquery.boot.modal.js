@@ -76,7 +76,7 @@ function ACE(type, text, callback){
 	});
 } //end: function ACE(type, text, callback){
 
-function ALERT(text){
+function ALERT(text, callback){
 	new ACE("alert", text, callback);
 }
 function CONFIRM(text, callback){
