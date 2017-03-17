@@ -66,6 +66,10 @@ function ACE(type, text, callback){
 	$("[id^='ace-modal-'] [data-dismiss]").click(function(){
 		$(this).closest("div.modal").hide();
 
+		if(type === "alert" && callback !== undefined){
+			callback();
+		}
+
 		if(type === "confirm" && callback !== undefined && $(this).closest(".modal").attr("id") === "ace-modal-confirm"){
 			callback($(this).attr("class") === "btn btn-success");
 		}
@@ -73,7 +77,7 @@ function ACE(type, text, callback){
 } //end: function ACE(type, text, callback){
 
 function ALERT(text){
-	new ACE("alert", text);
+	new ACE("alert", text, callback);
 }
 function CONFIRM(text, callback){
 	new ACE("confirm", text, callback);
