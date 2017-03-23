@@ -4,13 +4,13 @@ function cssToStyle(json){
 		result += i + ": " + json[i] + "; ";
 	}
 	return result;
-}
+} //end: function cssToStyle(json){
 
 var BootModal = {
 	defaults: function(){
 		console.log(arguments);
 		if(arguments.length === 1){ //button modal
-			return {
+			var defaults = {
 				id: "" //modal id
 				, width: 1000
 				, static: true
@@ -27,6 +27,8 @@ var BootModal = {
 				}
 				, footer: "<a href='#' data-dismiss='modal' class='btn btn-default'>Cancel</a> <a href='#' class='btn btn-success'>Save</a>"
 			};
+			$.extend(true, defaults, arguments[0]);
+			return defaults;
 		}else{ //direct modal
 			/*
 			* type에 따라 alert/confirm/error로 분류한다.
@@ -80,7 +82,7 @@ var BootModal = {
 
 function ACE(type, text, callback){
 	var defaults = BootModal.defaults(arguments[0], arguments[1], arguments[2]);
-	var modal = "<div class='modal' id='" + defaults.id + "' " + (defaults.static ? "data-backdrop='static'" : "") + ">\n" + BootModal.inner(defaults) + "</div>\n";
+	var modal = "<div class='modal' id='" + defaults.id + "' " + (defaults.static ? "data-backdrop='static'" : "") + " style='z-index: 9999;'>\n" + BootModal.inner(defaults) + "</div>\n";
 	var $ace = $("body #ace-modal-" + type);
 
 	if($ace.length !== 0){
@@ -103,25 +105,23 @@ function ACE(type, text, callback){
 
 function ALERT(text, callback){
 	new ACE("alert", text, callback);
-}
+} //end: function ALERT(text, callback){
 function CONFIRM(text, callback){
 	new ACE("confirm", text, callback);
-}
+} //end: function CONFIRM(text, callback){
 function ERROR(text){
 	new ACE("error", text);
-}
+} //end: function ERROR(text){
 function _MODAL(data){
 	var defaults = BootModal.defaults(data);
-	$.extend(true, defaults, data);
-
 	var $modal = $("#" + defaults.id);
 	var inner = BootModal.inner(defaults);
-	var modal = $modal.length === 0 ? "<div class='modal' id='" + defaults.id + "' " + (defaults.static ? "data-backdrop='static'" : "") + ">" + inner + "</div>\n" : inner;
+	var modal = $modal.length === 0 ? "<div class='modal' id='" + defaults.id + "' " + (defaults.static ? "data-backdrop='static'" : "") + " style='z-index: 9999;'>\n" + inner + "</div>\n" : inner;
 
 	$modal.length === 0 ? $("body").append(modal) : $modal.html(modal);
 
 	return defaults;
-}
+} //end: function _MODAL(data){
 function MODAL(data){
 	var defaults = _MODAL(data);
 	var $modal = $("#" + defaults.id);
@@ -133,7 +133,7 @@ function MODAL(data){
 		$modal.hide();
 		$("div.modal-backdrop.in").remove();
 	});
-}
+} //end: function MODAL(data){
 
 $.fn.modal = function(data){
 	var defaults = _MODAL(data);
