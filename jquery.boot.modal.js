@@ -8,7 +8,6 @@ function cssToStyle(json){
 
 var BootModal = {
 	defaults: function(){
-		console.log(arguments);
 		if(arguments.length === 1){ //button modal
 			var defaults = {
 				id: "" //modal id
