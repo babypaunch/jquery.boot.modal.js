@@ -121,16 +121,19 @@ function _MODAL(data){
 
 	return defaults;
 } //end: function _MODAL(data){
-function MODAL(data){
+function MODAL(data, recycle){
 	var defaults = _MODAL(data);
 	var $modal = $("#" + defaults.id);
 
 	$modal.show();
-	$("body").append('<div class="modal-backdrop in"></div>');
+	if(recycle !== true){
+		$("body").append('<div class="modal-backdrop in"></div>');
+	}
 
 	$("#" + defaults.id  + " [data-dismiss]").click(function(){
 		$modal.hide();
-		$("div.modal-backdrop.in").remove();
+		$dim = $("div.modal-backdrop.in");
+		$dim.eq($dim.length - 1).remove();
 	});
 } //end: function MODAL(data){
 
